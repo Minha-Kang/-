@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: shanghai-travel-map
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: ./dist
