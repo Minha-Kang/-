@@ -1,0 +1,23 @@
+/* The mobile itinerary is a three-position sheet; the desktop sidebar stays fixed. */
+.sheet-grab{display:none}
+@media(max-width:700px){
+ .app{--sheet-height:47dvh;--sheet-duration:250ms}
+ .sidebar{height:var(--sheet-height);transition:height var(--sheet-duration) cubic-bezier(.22,.8,.25,1);padding-bottom:env(safe-area-inset-bottom);overscroll-behavior:none}
+ .sidebar:before{display:none}
+ .sidebar.collapsed{height:0;visibility:hidden;transition:height var(--sheet-duration) cubic-bezier(.22,.8,.25,1),visibility 0s var(--sheet-duration)}
+ .sheet-grab{display:flex;align-items:center;justify-content:center;gap:9px;flex:0 0 44px;width:100%;min-height:44px;padding:7px 20px 0;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;color:#86947d}
+ .sheet-grab:active{cursor:grabbing}
+ .sheet-grab-bar{width:36px;height:4px;border-radius:4px;background:#c0cdb7}
+ .sheet-grab-hint{font-size:9px;letter-spacing:.15px}
+ .sidebar .brand{height:36px;padding:0 22px 6px;touch-action:none;user-select:none;-webkit-user-select:none}
+ .sidebar-scroll{overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;scroll-padding-top:10px}
+ .app.sheet-dragging .sidebar,.app.sheet-dragging .map-status,.app.sheet-dragging .legend,.app.sheet-dragging .mobile-toggle,.app.sheet-dragging .maplibregl-ctrl-bottom-right{transition:none!important}
+ .app.sheet-dragging{user-select:none;-webkit-user-select:none}
+ .map-status,.map-stage.expanded .map-status{bottom:calc(var(--sheet-height) + 43px + env(safe-area-inset-bottom));transition:bottom var(--sheet-duration) ease}
+ .legend,.map-stage.expanded .legend{bottom:calc(var(--sheet-height) + 16px + env(safe-area-inset-bottom));transition:bottom var(--sheet-duration) ease}
+ .mobile-toggle,.map-stage.expanded .mobile-toggle{bottom:calc(var(--sheet-height) + 15px + env(safe-area-inset-bottom));min-height:44px;transition:bottom var(--sheet-duration) ease}
+ .maplibregl-ctrl-bottom-right,.map-stage.expanded .maplibregl-ctrl-bottom-right{bottom:var(--sheet-height)!important;transition:bottom var(--sheet-duration) ease}
+ .app.sheet-is-expanded .map-status,.app.sheet-is-expanded .legend,.app.sheet-is-expanded .mobile-toggle,.app.sheet-is-expanded .map-controls{visibility:hidden;pointer-events:none}
+ .toast{bottom:calc(min(var(--sheet-height,47dvh),65dvh) + 16px)}
+}
+@media(prefers-reduced-motion:reduce){.sidebar,.map-status,.legend,.mobile-toggle,.maplibregl-ctrl-bottom-right{transition:none!important}}

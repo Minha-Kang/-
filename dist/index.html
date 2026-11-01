@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f6f4ed"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="상하이, 우리들의 4일. 일정과 취향을 담은 나만의 여행 지도."><title>상하이, 우리들의 4일 — SHANGHAI DAYS</title><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./vendor/maplibre-gl.css"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./sheet.css"><link rel="stylesheet" href="./search.css"><link rel="stylesheet" href="./transit.css"><script src="./vendor/maplibre-gl.js" defer></script><script type="module" src="./app.js"></script></head>
+<body>
+<div class="app">
+ <aside class="sidebar" id="sidebar">
+  <button class="sheet-grab" id="sheetGrab" aria-label="일정 창 높이 조절" aria-controls="sidebarContent" aria-expanded="false"><span class="sheet-grab-bar" aria-hidden="true"></span><span class="sheet-grab-hint" aria-hidden="true">위로 끌어 더 보기</span></button>
+  <header class="brand"><a href="./" aria-label="여행 지도 처음으로"><span class="brand-icon">上</span><span>SHANGHAI <b>DAYS</b><small>우리의 여행, 한눈에.</small></span></a><button class="icon-btn" id="infoBtn" aria-label="사용 안내">ⓘ</button></header>
+  <section class="trip-intro"><div class="eyebrow"><span class="tiny-dot"></span> CHINA, SHANGHAI <span class="trip-tag">3박 4일</span></div><h1>상하이,<br>우리들의 <em>4일.</em></h1><p>낯선 골목부터 반짝이는 와이탄까지</p><div class="trip-meta"><span>✈ ICN → PVG</span><span>중국 현지시간 기준</span></div><span class="chinese-title" aria-hidden="true">上海</span></section>
+  <nav class="view-tabs" aria-label="보기"><button data-view="itinerary" class="active">여행 일정</button><button data-view="discover">발견하기</button><button data-view="saved">저장한 곳 <span id="savedCount">0</span></button></nav>
+  <div class="day-tabs" id="dayTabs" aria-label="여행 날짜"></div>
+  <div class="sidebar-scroll" id="sidebarContent"></div>
+  <footer class="sidebar-footer"><button id="checklistBtn"><span>☑</span> 출발 전 체크리스트 <span id="checkCount">0</span><b>↗</b></button></footer>
+ </aside>
+ <main class="map-stage" id="mapStage" aria-label="상하이 여행 지도">
+  <div id="map"></div><div class="map-vignette"></div>
+  <div class="map-top"><form class="search-box" id="searchForm"><span class="search-icon">⌕</span><input id="searchInput" autocomplete="off" placeholder="한국어로 검색 · 와이탄, 카페" aria-label="한국어·중국어 장소나 주소 검색" maxlength="120"><kbd>↵</kbd><button type="submit" aria-label="검색">찾기</button></form><button class="route-open" id="routeBtn"><span>↱</span> 길찾기</button></div>
+  <div id="searchResults" class="search-results" hidden></div>
+  <div class="filter-chips" id="filters"></div>
+  <div class="context-tools" aria-label="주변 가게와 건물 표시"><button id="contextToggle" class="active" aria-pressed="true"><span aria-hidden="true">◉</span> 주변 이름</button></div>
+  <div class="map-status"><span class="tiny-dot"></span><span id="mapStatus">지도를 불러오는 중</span></div>
+  <div class="map-controls"><div class="dimension"><button id="twoD" class="active" aria-pressed="true">2D</button><button id="threeD" aria-pressed="false">3D</button></div><button id="zoomIn" aria-label="지도 확대">＋</button><button id="zoomOut" aria-label="지도 축소">−</button><button id="fitMap" aria-label="일정 전체 보기">⛶</button><button id="locateBtn" aria-label="GPS 현재 위치" title="GPS 현재 위치">◎</button><button id="pinBtn" aria-label="지도에서 직접 위치 선택" title="지도에서 직접 위치 선택">⚑</button></div>
+  <div class="map-caption" id="mapCaption"><span class="caption-symbol">↗</span><div><strong>우리의 첫 번째 상하이</strong><p>지도 위 장소를 눌러 여행을 시작해요</p></div><span class="caption-coordinate">31°14′ N<br>121°29′ E</span></div>
+  <button class="mobile-toggle" id="mobileToggle">☰ 오늘의 일정 <span>⌃</span></button>
+  <div class="legend"><span class="legend-line"></span> 점선은 방문 순서 · 실제 이동 경로 아님</div>
+ </main>
+</div>
+<div class="panel-backdrop" id="backdrop" hidden></div>
+<section class="detail-panel" id="detailPanel" role="dialog" aria-modal="true" aria-label="장소 정보" hidden></section>
+<section class="route-panel" id="routePanel" role="dialog" aria-modal="true" aria-label="길찾기" hidden>
+ <div class="panel-heading"><div><div class="eyebrow">FIND YOUR WAY</div><h2>다음 장소로, 가볼까요?</h2></div><button class="icon-btn close-panel" aria-label="닫기">×</button></div>
+ <div class="route-inputs"><label><span class="origin-dot"></span><select id="originSelect" aria-label="출발지"></select></label><button id="swapRoute" aria-label="출발지와 도착지 바꾸기">⇅</button><label><span class="destination-dot"></span><select id="destinationSelect" aria-label="도착지"></select></label></div>
+ <div class="route-extra"><button id="routeSearchBtn">⌕ 다른 장소 검색</button><button id="routePinBtn">⚑ 지도에서 선택</button></div>
+ <div class="mode-tabs"><button data-mode="taxi" class="active">🚕 택시</button><button data-mode="transit">🚇 대중교통</button><button data-mode="walk">🚶 도보</button></div>
+ <p id="routeModeNote" class="route-mode-note" hidden>상하이 지하철 노선으로 계산해요. 버스·실시간 배차는 포함되지 않아요.</p><button id="calculateRoute" class="primary-btn">경로 알아보기 <span>↗</span></button><div id="routeResult" aria-live="polite"><p class="route-empty">현재 위치 또는 일정 속 장소를 출발지로 선택하세요.<br>새 장소는 검색하거나 지도에 직접 표시할 수 있어요.</p></div>
+</section>
+<section class="utility-panel" id="utilityPanel" role="dialog" aria-modal="true" aria-label="여행 준비" hidden></section>
+<div class="toast" id="toast" role="status" hidden></div>
+</body></html>

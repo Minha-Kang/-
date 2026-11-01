@@ -1,0 +1,102 @@
+// Researched branch pins, 2026-10-31. Coordinates are WGS84.
+// Amap publishes GCJ-02 coordinates; CHAGEE pins below were converted by
+// iteratively inverting the existing wgs84ToGcj02 transform (8 iterations).
+// HEYTEA pins use actual OSM cafe nodes, cross-checked against Amap branches.
+// approximate stays true because indoor floors/entrances and opening hours
+// need a visit-day check. These are real branches, not generic area search pins.
+const cafe = (item) => ({
+  category: 'cafe',
+  recommended: true,
+  approximate: true,
+  ...item,
+});
+
+export const cafePlaces = [
+  cafe({
+    id: 'cafe-heytea-new-world',
+    brandId: 'heytea',
+    name: '헤이티 · 신세계성점',
+    cn: '喜茶(上海新世界城店)',
+    lng: 121.469453,
+    lat: 31.2374049,
+    area: '인민광장 · 신세계성',
+    address: '上海市黄浦区南京西路2–88号 新世界城1楼F1-019区',
+    description: '인민광장과 난징동루 서쪽에서 들르기 좋은 헤이티. 신세계성 쇼핑이나 D3 투어 집결 전 음료 후보예요.',
+    tips: [
+      '新世界城점이에요. 난징동루228号의 新世界新丸中心점과 구분해 주세요.',
+      '매장 핀은 확인했지만 쇼핑몰 내부 입구·층 안내와 영업은 방문 당일 다시 확인하세요.',
+      '투어 전 들른다면 주문 대기보다 집결 시간을 우선하고, 픽업 주문의 지점명을 확인하세요.',
+    ],
+    source: 'https://www.amap.com/place/B0FFIPRMMJ',
+    coordinateSource: 'https://www.openstreetmap.org/node/7099689669',
+    coordinateNote: 'OSM 카페 노드. 고덕 지점 좌표를 WGS84로 변환한 위치와 약15m 이내에서 일치.',
+    searchQuery: '喜茶(上海新世界城店)',
+    aliases: ['헤이티신세계성점', '헤이티인민광장신세계성', 'HEYTEA New World City'],
+  }),
+  cafe({
+    id: 'cafe-heytea-xinwan',
+    brandId: 'heytea',
+    name: '헤이티 · 신세계신완센터점',
+    cn: '喜茶(上海新世界新丸中心店)',
+    lng: 121.480343,
+    lat: 31.2403931,
+    area: '난징동루 · 신세계신완센터',
+    address: '上海市黄浦区南京东路228号 新世界新丸中心1楼1A-06C',
+    description: '난징동루에서 와이탄으로 걷는 길에 고를 수 있는 헤이티. 예전 신세계다이마루 지점으로 알려진 곳이에요.',
+    tips: [
+      '현재 지도 지점명은 新世界新丸中心店이에요. 이전 안내에는 新世界大丸百货黑金店으로 나올 수 있어요.',
+      '예전 A07 표기와 현재 1A-06C 표기가 달라 현장 층별 안내에서 喜茶를 확인하세요.',
+      'D1에는 18:20 호텔 인디고 미팅에 늦지 않도록 대기 시간을 살펴보세요.',
+    ],
+    source: 'https://www.amap.com/place/B0GRFSDL1E',
+    coordinateSource: 'https://www.openstreetmap.org/node/11209494694',
+    coordinateNote: 'OSM 카페 노드. 고덕 지점 좌표를 WGS84로 변환한 위치와 약23m 이내에서 일치.',
+    additionalSources: ['https://www.thepaper.cn/newsDetail_forward_8286525'],
+    searchQuery: '喜茶(上海新世界新丸中心店)',
+    aliases: ['헤이티신세계신완센터', '헤이티신완센터점', '헤이티다이마루점', '헤이티신세계다이마루', '喜茶(上海新世界大丸百货黑金店)'],
+  }),
+  cafe({
+    id: 'cafe-chagee-wukang',
+    brandId: 'chagee',
+    name: '차지 · 우캉루점',
+    cn: 'CHAGEE霸王茶姬(上海武康路店)',
+    lng: 121.432969,
+    lat: 31.2062645,
+    area: '우캉맨션 · 싱궈루',
+    address: '上海市长宁区兴国路396号 兴国大厦1楼',
+    description: '우캉맨션 맞은편 싱궈빌딩의 차지. D2 우캉루 산책을 시작하며 원엽 밀크티를 마시기 좋은 위치예요.',
+    tips: [
+      '고덕 주소는 兴国路396号, 브랜드 홍보 자료는 같은 兴国大厦를 408号로 안내해요. 건물 1층의 霸王茶姬 간판과 입구를 확인하세요.',
+      '우캉맨션 촬영 동선에 묶을 수 있어요. 도로를 건널 때는 횡단보도를 이용하세요.',
+      '주문 전 방문 지점·당일 영업·대기 시간을 확인하세요. 단맛과 얼음 선택은 메뉴마다 달라요.',
+    ],
+    source: 'https://www.amap.com/place/B0KRAPC7U9',
+    coordinateSource: 'https://www.amap.com/place/B0KRAPC7U9',
+    coordinateNote: '고덕 GCJ-02 [121.437593,31.204397]를 WGS84로 변환. OSM 兴国路(way11761212)·武康大楼(way293434151) 주변 도로와 대조.',
+    additionalSources: ['https://ep.shxwcb.com/2025/01/28/20250128-38-1_20250128015054.html', 'https://wap.xinmin.cn/content/32709345.html'],
+    searchQuery: 'CHAGEE霸王茶姬(上海武康路店)',
+    aliases: ['차지우캉루점', '바왕차지우캉루', '패왕차희우캉루', 'CHAGEE Wukang Road'],
+  }),
+  cafe({
+    id: 'cafe-chagee-yuyuan',
+    brandId: 'chagee',
+    name: '차지 · 예원점',
+    cn: 'CHAGEE霸王茶姬(上海豫园店)',
+    lng: 121.4866932,
+    lat: 31.2292667,
+    area: '예원 · 푸유루',
+    address: '上海市黄浦区福佑路234号 一层西部105',
+    description: '예원 상가 북쪽 푸유루의 차지. D2 예원 산책 전후나 숙소 주변에서 마실 밀크티 후보로 저장했어요.',
+    tips: [
+      '예원 정원 입장권과 별개인 거리 매장이에요. 福佑路234号의 지점명을 확인하세요.',
+      'D2 20:00 저녁 식당으로 이동할 시간을 남기고 대기에 맞춰 들러 주세요.',
+      '야경 시간에 문을 연다고 가정하지 말고 당일 매장 영업과 주문 가능 여부를 확인하세요.',
+    ],
+    source: 'https://www.amap.com/place/B0J04S4AEA',
+    coordinateSource: 'https://www.amap.com/place/B0J04S4AEA',
+    coordinateNote: '고덕 GCJ-02 [121.491172,31.227287]를 WGS84로 변환. 예원 상가 북쪽 도로·상업 건물 권역과 대조.',
+    additionalSources: ['https://ep.shxwcb.com/2025/01/28/20250128-38-1_20250128015054.html'],
+    searchQuery: 'CHAGEE霸王茶姬(上海豫园店)',
+    aliases: ['차지예원점', '바왕차지예원', '패왕차희예원', 'CHAGEE Yuyuan'],
+  }),
+];

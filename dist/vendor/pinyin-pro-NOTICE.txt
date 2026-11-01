@@ -1,0 +1,11 @@
+pinyin-pro 3.29.5
+License: MIT (see pinyin-pro-LICENSE.txt)
+Source: https://github.com/zh-lx/pinyin-pro
+Documentation: https://pinyin-pro.cn/en/use/pinyin.html
+Official npm archive: https://registry.npmjs.org/pinyin-pro/-/pinyin-pro-3.29.5.tgz
+Archive integrity: sha512-Fk5YoRmtdHqJWqAuzYVG/NzvzeCbaG+ZEwbY6Nbps3QAIrvQQEtcm49frcyCM8i2b5najnzPDtYqrHRYTTiuwQ==
+Original dist/index.js SHA-256: a488173470768ace074c3c4fffbb880e83523b3aa9598a8147c930e7f2d5c7dc
+
+The official dist/index.js UMD payload is unmodified. Local module/exports
+bindings and a named pinyin export adapt it to browser ES modules without
+creating global variables. No package scripts were run.

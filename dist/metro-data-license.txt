@@ -1,0 +1,41 @@
+Shanghai metro topology data
+
+Source: OpenStreetMap contributors, network relation 6799988
+https://www.openstreetmap.org/relation/6799988
+https://api.openstreetmap.org/api/0.6/relation/6799988.json
+Retrieved: 2026-10-30 (UTC; 2026-10-31 in Korea)
+
+The station coordinates and ordered route topology in metro-data.json and
+metro-data.js are derived from OpenStreetMap and are distributed under the
+Open Database License (ODbL) 1.0:
+https://opendatacommons.org/licenses/odbl/1-0/
+Attribution: (c) OpenStreetMap contributors
+https://www.openstreetmap.org/copyright
+
+The compact database is available as metro-data.json, in an open JSON format.
+It includes the route relation IDs and source stop node IDs. The originating
+OSM objects are also publicly accessible through the OSM API.
+
+Changes from the original data:
+- Condensed ordered stop nodes into station groups and directed route patterns.
+- Added Korean travel labels where reviewed; other names remain in Chinese.
+- Excluded Line 16 express/direct services and duplicate Line 1 short turns.
+- Kept Line 4 circular closure, and same-name Line 2 / 17 National Exhibition
+  and Convention Center stations separate. Source for separate station status:
+  https://www.ciie.org/zbh/bqxwbd/20240930/45951.html
+- Conservatively split Line 5 branch services at Dongchuan Road; passengers
+  must follow the actual train destination and station announcements.
+- Included the Huangpu River centreline, from OSM relation 19289628, to reject
+  all walking access candidates and snapping offsets that cross the river.
+  This deliberately excludes even possible bridge walks: routing tables do
+  not expose ferry legs, and metro journeys can cross by rail instead.
+  https://www.openstreetmap.org/relation/19289628
+
+The database describes connectivity, not a timetable. Service outages,
+first/last trains, platform/exit choices, accessibility, fares, live departures
+and train occupancy are not included. Route times and access walking distances
+are local estimates, not observations or operator guarantees. Approximate
+station-to-station geometry is deliberately not drawn as a railway alignment.
+
+This data license applies to the derived database. It does not change the
+license of unrelated application source code.
